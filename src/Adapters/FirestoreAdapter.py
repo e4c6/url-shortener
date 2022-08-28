@@ -30,7 +30,7 @@ class FirebaseAdapter(IDbAdapter):
         if not urlDict:
             raise UrlNotFoundError
 
-        url = UrlModel(urlDict['target'])
+        url = UrlModel(value=urlDict['target'])
 
         return url
 
