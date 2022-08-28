@@ -1,14 +1,12 @@
 from __future__ import annotations
-from src.Models import EmailModel
+from pydantic import BaseModel
+from src.Models.EmailModel import EmailModel
 from src.Models.PasswordHashModel import PasswordHashModel
 
-class UserModel:
+
+class UserModel(BaseModel):
     email: EmailModel
     hashedPassword: PasswordHashModel
-
-    def __init__(self, email: EmailModel, hashedPassword: PasswordHashModel):
-        self.email = email
-        self.hashedPassword = hashedPassword
 
     def toJson(self) -> dict:
         return {
@@ -21,3 +19,8 @@ class UserModel:
         emailMatch: bool = self.email.toString() == target.email.toString()
 
         return passwordMatch and emailMatch
+
+    class Config:
+        orm_mode = True
+
+

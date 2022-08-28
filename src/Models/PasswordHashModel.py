@@ -1,12 +1,16 @@
-class PasswordHashModel:
-    value: bytes
+from pydantic import BaseModel
 
-    def __init__(self, hashedPassword: bytes):
-        self.value = hashedPassword
+
+class PasswordHashModel(BaseModel):
+    value: bytes
 
     def __str__(self) -> str:
         return str(self.value)
-    toString = __str__
 
     def toJson(self):
         return self.toString()
+
+    toString = __str__
+
+    class Config:
+        orm_mode = True

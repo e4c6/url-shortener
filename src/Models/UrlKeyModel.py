@@ -1,13 +1,10 @@
 from src.Models.UrlModel import UrlModel
+from pydantic import BaseModel
 
 
-class UrlKeyModel:
+class UrlKeyModel(BaseModel):
     key: str
     targetUrl: UrlModel
-
-    def __init__(self, key: str, targetUrl: UrlModel):
-        self.key: str = key
-        self.targetUrl: UrlModel = targetUrl
 
     def __str__(self) -> str:
         return self.key
@@ -19,3 +16,6 @@ class UrlKeyModel:
 
     def toPath(self):
         return '/' + self.toString()
+
+    class Config:
+        orm_mode = True

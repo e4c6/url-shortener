@@ -1,8 +1,7 @@
-class UrlModel:
-    value: str
+from pydantic import BaseModel
 
-    def __init__(self, value: str):
-        self.value = value
+class UrlModel(BaseModel):
+    value: str
 
     def __str__(self) -> str:
         return self.value
@@ -11,3 +10,6 @@ class UrlModel:
         return self.value
 
     toString = __str__
+
+    class Config:
+        orm_mode = True
