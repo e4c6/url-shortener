@@ -36,5 +36,5 @@ class IConfig(ABC):
 
     @staticmethod
     @abstractmethod
-    def initConfig() -> None:
+    def initConfig(**kwargs) -> None:
         raise NotImplementedError
