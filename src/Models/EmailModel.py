@@ -1,8 +1,8 @@
-class EmailModel:
-    value: str
+from pydantic import BaseModel
 
-    def __init__(self, value: str):
-        self.value = value
+
+class EmailModel(BaseModel):
+    value: str
 
     def __str__(self) -> str:
         return self.value
@@ -11,3 +11,6 @@ class EmailModel:
         return self.value
 
     toString = __str__
+
+    class Config:
+        orm_mode = True
